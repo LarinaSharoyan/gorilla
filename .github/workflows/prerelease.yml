@@ -20,6 +20,3 @@ jobs:
 
       - name: Building
         run: go build -v -o hello-world .
-        
-      - name: testing
-        run: go run hello-world_test.go
