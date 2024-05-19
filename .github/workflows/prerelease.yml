@@ -1,4 +1,4 @@
-name: Prerelease Workflow
+name: a
 on:
   push:
     branches:
@@ -20,12 +20,3 @@ jobs:
 
       - name: Build and package artifact
         run: go build -v -o hello-world .
-
-      - name: Push artifact
-        env:
-          NEXUS_URL: ${{ secrets.NEXUS_URL }}
-          NEXUS_USERNAME: ${{ secrets.NEXUS_USERNAME }}
-          NEXUS_PASSWORD: ${{ secrets.NEXUS_PASSWORD }}
-          ARTIFACT_PATH: hello-world
-        run: |
-          curl -u $NEXUS_USERNAME:$NEXUS_PASSWORD --upload-file $ARTIFACT_PATH $NEXUS_URL/repository/${{ github.event_name == 'push' && 'Dev' || 'Test' }}/hello-world
